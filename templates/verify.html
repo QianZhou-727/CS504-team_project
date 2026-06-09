@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Verify MFA | CS504 MFA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="auth-shell">
+        <section class="auth-card">
+            <p class="eyebrow">MFA verification</p>
+            <h1>Enter OTP code</h1>
+            <p class="lede">Use the 6-digit code from your authenticator app for <strong>{{ username }}</strong>.</p>
+
+            {% include "_messages.html" ignore missing %}
+
+            <form method="post" class="form">
+                <label for="otp_code">Authenticator code</label>
+                <input id="otp_code" name="otp_code" type="text" inputmode="numeric" pattern="[0-9 ]{6,8}" autocomplete="one-time-code" required>
+
+                <button type="submit">Verify</button>
+            </form>
+
+            <p class="switch-link"><a href="{{ url_for('logout') }}">Cancel login</a></p>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard | CS504 MFA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="dashboard-shell">
+        <nav class="topbar">
+            <div>
+                <p class="eyebrow">Protected Area</p>
+                <h1>Dashboard</h1>
+            </div>
+            <a class="logout" href="{{ url_for('logout') }}">Logout</a>
+        </nav>
+
+        {% include "_messages.html" ignore missing %}
+
+        <section class="dashboard-panel">
+            <h2>Welcome, {{ username }}.</h2>
+            <p>Your password and one-time passcode were both verified. This page is blocked unless MFA is complete.</p>
+            <dl>
+                <div>
+                    <dt>Password storage</dt>
+                    <dd>bcrypt hash only</dd>
+                </div>
+                <div>
+                    <dt>MFA method</dt>
+                    <dd>TOTP authenticator app</dd>
+                </div>
+                <div>
+                    <dt>Session state</dt>
+                    <dd>Authenticated with MFA</dd>
+                </div>
+            </dl>
+        </section>
+    </main>
+</body>
+</html>

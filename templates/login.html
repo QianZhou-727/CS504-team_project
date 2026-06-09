@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login | CS504 MFA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="auth-shell">
+        <section class="auth-card">
+            <p class="eyebrow">CS504 MFA System</p>
+            <h1>Log in</h1>
+            <p class="lede">Enter your username and password first.</p>
+
+            {% include "_messages.html" ignore missing %}
+
+            <form method="post" class="form">
+                <label for="username">Username</label>
+                <input id="username" name="username" type="text" autocomplete="username" required>
+
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password" autocomplete="current-password" required>
+
+                <button type="submit">Continue</button>
+            </form>
+
+            <p class="switch-link">Need an account? <a href="{{ url_for('register') }}">Register</a></p>
+        </section>
+    </main>
+</body>
+</html>
